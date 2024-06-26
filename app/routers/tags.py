@@ -3,9 +3,9 @@ from typing import List
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
-from app.crud.tags import create_tag, get_tag, get_tags, update_tag, delete_tag
-from app.database import get_session
-from app.schemas.tags import TagCreate, TagUpdate, TagRead, TagsRead
+from crud.tags import create_tag, get_tag, get_tags, update_tag, delete_tag
+from database import get_session
+from schemas.tags import TagCreate, TagUpdate, TagRead, TagsRead
 
 router = APIRouter(
     prefix='/tags',

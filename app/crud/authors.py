@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from app.models import Author
-from app.schemas.authors import AuthorCreate, AuthorUpdate
+from models import Author
+from schemas.authors import AuthorCreate, AuthorUpdate
 
 
 def create_author(db: Session, author: AuthorCreate):

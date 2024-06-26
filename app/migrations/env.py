@@ -1,10 +1,8 @@
 from logging.config import fileConfig
 
-from sqlalchemy import engine_from_config, pool
-
 from alembic import context
 
-from app.models import Base
+from models import Base
 from config import POSTGRES_USER, POSTGRES_PASSWORD, POSTGRES_HOST, POSTGRES_PORT, POSTGRES_DB
 
 # this is the Alembic Config object, which provides
@@ -66,7 +64,7 @@ def run_migrations_online() -> None:
     and associate a connection with the context.
 
     """
-    from app.database import engine
+    from database import engine
 
     connectable = engine
 

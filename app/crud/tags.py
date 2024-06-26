@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from app.models import Tag
-from app.schemas.tags import TagCreate, TagUpdate
+from models import Tag
+from schemas.tags import TagCreate, TagUpdate
 
 
 def create_tag(db: Session, tag: TagCreate):

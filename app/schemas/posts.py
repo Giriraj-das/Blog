@@ -2,9 +2,9 @@ from datetime import datetime
 from typing import List, Optional
 from pydantic import BaseModel
 
-from app.schemas.authors import AuthorRead
-from app.schemas.categories import CategoryRead
-from app.schemas.tags import TagBase, TagCreate
+from schemas.authors import AuthorRead
+from schemas.categories import CategoryRead
+from schemas.tags import TagBase, TagCreate
 
 
 class PostBase(BaseModel):

@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 
-from app.routers import posts, categories, tags, authors
+from routers import posts, categories, tags, authors
 
 app = FastAPI(
     title='Blog',

@@ -3,9 +3,9 @@ from typing import List
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
-from app.crud.authors import create_author, get_author, get_authors, update_author, delete_author
-from app.database import get_session
-from app.schemas.authors import AuthorCreate, AuthorUpdate, AuthorRead, AuthorsRead
+from crud.authors import create_author, get_author, get_authors, update_author, delete_author
+from database import get_session
+from schemas.authors import AuthorCreate, AuthorUpdate, AuthorRead, AuthorsRead
 
 router = APIRouter(
     prefix='/authors',

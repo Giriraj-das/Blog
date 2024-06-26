@@ -3,9 +3,9 @@ from typing import List
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
-from app.crud.categories import create_category, get_category, get_categories, update_category, delete_category
-from app.database import get_session
-from app.schemas.categories import CategoryCreate, CategoryUpdate, CategoryRead, CategoriesRead
+from crud.categories import create_category, get_category, get_categories, update_category, delete_category
+from database import get_session
+from schemas.categories import CategoryCreate, CategoryUpdate, CategoryRead, CategoriesRead
 
 router = APIRouter(
     prefix='/categories',
