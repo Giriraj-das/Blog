@@ -34,6 +34,7 @@ def delete_tag(db: Session, tag_id: int):
     db_tag = db.query(Tag).filter(Tag.id == tag_id).first()
     if db_tag is None:
         return None
+
     db.delete(db_tag)
     db.commit()
     return db_tag

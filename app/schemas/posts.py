@@ -23,6 +23,7 @@ class PostUpdate(BaseModel):
     content: Optional[str] = None
     author_id: Optional[int] = None
     category_id: Optional[int] = None
+    tags: Optional[List[TagCreate]] = None
 
 
 class PostRead(PostBase):
@@ -38,6 +39,7 @@ class PostRead(PostBase):
 
 
 class PostsRead(PostBase):
+    id: int
 
     class Config:
         orm_mode: True

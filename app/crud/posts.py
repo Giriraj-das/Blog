@@ -1,5 +1,5 @@
-from sqlalchemy.orm import Session
-from app.models import Post, Tag, PostTag
+from sqlalchemy.orm import Session, joinedload
+from app.models import Post, Tag
 from app.schemas.posts import PostCreate, PostUpdate
 
 
@@ -38,7 +38,10 @@ def create_post(db: Session, post: PostCreate):
 
 
 def get_post(db: Session, post_id: int):
-    return db.query(Post).filter(Post.id == post_id).first()
+    return db.query(Post).options(
+        joinedload(Post.author),
+        joinedload(Post.category),
+        joinedload(Post.tags)).filter(Post.id == post_id).first()
 
 
 def get_posts(db: Session, skip: int = 0, limit: int = 10):
@@ -51,10 +54,8 @@ def update_post(db: Session, post_id: int, post: PostUpdate):
         return None
     for key, value in post.dict(exclude_unset=True).items():
         if key != 'tags':  # обновляем поля без тегов
-            print(key)
             setattr(db_post, key, value)
         else:
-            print(key)
             db_post.tags.clear()  # удаляем старые теги
 
             for tag_data in post.tags:
@@ -74,9 +75,13 @@ def update_post(db: Session, post_id: int, post: PostUpdate):
 
 
 def delete_post(db: Session, post_id: int):
-    db_post = db.query(Post).filter(Post.id == post_id).first()
+    db_post = db.query(Post).options(
+        joinedload(Post.author),
+        joinedload(Post.category),
+        joinedload(Post.tags)).filter(Post.id == post_id).first()
     if not db_post:
         return None
+
     db.delete(db_post)
     db.commit()
     return db_post
