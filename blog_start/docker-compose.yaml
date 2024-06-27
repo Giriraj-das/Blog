@@ -20,7 +20,7 @@ services:
     image: ${IMAGE}
     restart: always
     env_file:
-      - .env.example
+      - .env
     environment:
       POSTGRES_HOST: postgres
     depends_on:
