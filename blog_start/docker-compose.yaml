@@ -17,13 +17,10 @@ services:
       retries: 3
 
   api:
-    build:
-      context: .
-      dockerfile: Dockerfile
     image: ${IMAGE}
     restart: always
     env_file:
-      - ./.env
+      - .env.example
     environment:
       POSTGRES_HOST: postgres
     depends_on:
@@ -31,8 +28,6 @@ services:
         condition: service_healthy
     ports:
       - "8000:8000"
-    volumes:
-      - ./app/:/code
 
 volumes:
   db_data:
